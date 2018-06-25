@@ -1,0 +1,28 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="container">
+
+      <h1>New Game</h1>
+      <div class="letterlist">
+        <% @letters.each do |letter| %>
+          <span class="letterbox"> <%= letter %></span>
+        <% end %>
+      </div>
+
+      <div class="inputform">
+        <form action="/score" method="POST">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <input type="text" class="inputfield" name="word" placeholder="Type your word...">
+          <input type="hidden" name="grid" value="<%= @letters.join %>">
+          <br>
+          <button type="submit" class="mybutton">Enter</button>
+        </form>
+      </div>
+
+    </div>
+
+  </body>
+</html>
+
